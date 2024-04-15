@@ -1,7 +1,7 @@
-<br />
+
 
 <p align="center">
-<img src="https://github.com/limbo-works/Limbo.Nuxt.Shopify/assets/44546482/90408dd8-2711-43f7-8490-0a654b7f7062" style="width:100px;" />
+<img src="https://github.com/limbo-works/Limbo.Nuxt.ShopifyClient/assets/44546482/9a8fb9e1-4004-4743-b3d5-9b30aa7fe96c" style="width: 100px;" />
 </p>
 
 <h1 align="center"><pre>@limbo-works/shopify-client</pre></h1>
