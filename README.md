@@ -30,7 +30,15 @@
 
 ## Installation
 
-To install the package as a dependecy, run the following command.
+Before installing the package, make sure you have the following line in your `.npmrc` file:
+
+```
+@limbo-works:registry=https://npm.pkg.github.com
+```
+
+<br />
+
+Then install the package with the following command:
 
 ```bash
 yarn add @limbo-works/nuxt-shopify
