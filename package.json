@@ -1,6 +1,6 @@
 {
 	"name": "@limbo-works/shopify-client",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Nuxt module for interacting with Shopify Storefront API",
 	"repository": "limbo-works/Limbo.Nuxt.ShopifyClient",
 	"license": "MIT",
