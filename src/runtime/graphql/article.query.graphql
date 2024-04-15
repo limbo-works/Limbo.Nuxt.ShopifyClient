@@ -1,0 +1,26 @@
+query ($id: ID!) {
+	article(id: $id) {
+		id
+		handle
+		title
+		contentHtml
+		excerptHtml
+		publishedAt
+		tags
+		blog {
+			id
+			handle
+			title
+		}
+		image {
+			url
+			width
+			height
+			altText
+		}
+		seo {
+			title
+			description
+		}
+	}
+}

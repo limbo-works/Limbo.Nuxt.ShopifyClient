@@ -1,0 +1,20 @@
+mutation ($input: CartInput) {
+	cartCreate(input: $input) {
+		cart {
+			id
+			checkoutUrl
+			lines(first: 99) {
+				edges {
+					node {
+						id
+						quantity
+					}
+				}
+			}
+		}
+		userErrors {
+			field
+			message
+		}
+	}
+}

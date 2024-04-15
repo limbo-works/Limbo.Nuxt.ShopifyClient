@@ -1,0 +1,21 @@
+query ($first: Int, $last: Int, $after: String, $before: String) {
+	blogs(first: $first, last: $last, after: $after, before: $before) {
+		edges {
+			node {
+				id
+				handle
+				title
+				seo {
+					title
+					description
+				}
+			}
+		}
+		pageInfo {
+			endCursor
+			startCursor
+			hasNextPage
+			hasPreviousPage
+		}
+	}
+}

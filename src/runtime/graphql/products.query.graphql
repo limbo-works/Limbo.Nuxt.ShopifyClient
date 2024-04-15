@@ -1,0 +1,54 @@
+query ($first: Int, $last: Int, $after: String, $before: String) {
+	products(first: $first, last: $last, after: $after, before: $before) {
+		edges {
+			node {
+				id
+				handle
+				title
+				description
+				availableForSale
+				productType
+				priceRange {
+					minVariantPrice {
+						amount
+						currencyCode
+					}
+					maxVariantPrice {
+						amount
+						currencyCode
+					}
+				}
+				featuredImage {
+					url
+					width
+					height
+					altText
+				}
+				variants(first: 99) {
+					edges {
+						node {
+							id
+							title
+						}
+					}
+				}
+				images(first: 99) {
+					edges {
+						node {
+							url
+							width
+							height
+							altText
+						}
+					}
+				}
+			}
+		}
+		pageInfo {
+			endCursor
+			startCursor
+			hasNextPage
+			hasPreviousPage
+		}
+	}
+}

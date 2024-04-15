@@ -1,0 +1,23 @@
+query ($first: Int, $last: Int, $after: String, $before: String) {
+	pages(first: $first, last: $last, after: $after, before: $before) {
+		edges {
+			node {
+				id
+				handle
+				title
+				body
+				bodySummary
+				seo {
+					title
+					description
+				}
+			}
+		}
+		pageInfo {
+			endCursor
+			startCursor
+			hasNextPage
+			hasPreviousPage
+		}
+	}
+}

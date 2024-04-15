@@ -1,0 +1,13 @@
+query ($id: ID!) {
+	page(id: $id) {
+		id
+		handle
+		title
+		body
+		bodySummary
+		seo {
+			title
+			description
+		}
+	}
+}

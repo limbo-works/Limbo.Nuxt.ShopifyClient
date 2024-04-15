@@ -1,0 +1,33 @@
+query (
+	$type: String!
+	$first: Int
+	$last: Int
+	$after: String
+	$before: String
+) {
+	metaobjects(
+		type: $type
+		first: $first
+		last: $last
+		after: $after
+		before: $before
+	) {
+		edges {
+			node {
+				id
+				handle
+				type
+				fields {
+					key
+					value
+				}
+			}
+		}
+		pageInfo {
+			endCursor
+			startCursor
+			hasNextPage
+			hasPreviousPage
+		}
+	}
+}

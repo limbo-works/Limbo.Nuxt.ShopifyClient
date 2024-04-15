@@ -1,0 +1,44 @@
+query ($id: ID!) {
+	product(id: $id) {
+		id
+		handle
+		title
+		description
+		availableForSale
+		productType
+		priceRange {
+			minVariantPrice {
+				amount
+				currencyCode
+			}
+			maxVariantPrice {
+				amount
+				currencyCode
+			}
+		}
+		featuredImage {
+			url
+			width
+			height
+			altText
+		}
+		variants(first: 99) {
+			edges {
+				node {
+					id
+					title
+				}
+			}
+		}
+		images(first: 99) {
+			edges {
+				node {
+					url
+					width
+					height
+					altText
+				}
+			}
+		}
+	}
+}

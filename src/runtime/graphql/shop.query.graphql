@@ -1,0 +1,54 @@
+query {
+	shop {
+		id
+		name
+		description
+		moneyFormat
+		brand {
+			shortDescription
+			slogan
+			colors {
+				primary {
+					background
+					foreground
+				}
+				secondary {
+					background
+					foreground
+				}
+			}
+			logo {
+				alt
+				image {
+					id
+					url
+					width
+					height
+					altText
+				}
+			}
+		}
+		paymentSettings {
+			acceptedCardBrands
+			supportedDigitalWallets
+			countryCode
+			currencyCode
+		}
+		privacyPolicy {
+			title
+			id
+		}
+		refundPolicy {
+			title
+			id
+		}
+		shippingPolicy {
+			title
+			id
+		}
+		termsOfService {
+			title
+			id
+		}
+	}
+}

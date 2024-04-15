@@ -1,0 +1,43 @@
+{
+	"name": "@limbo-works/shopify-client",
+	"version": "0.0.0",
+	"description": "Nuxt module for interacting with Shopify Storefront API",
+	"repository": "limbo-works/Limbo.Nuxt.ShopifyClient",
+	"license": "MIT",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/types.d.ts",
+			"import": "./dist/module.mjs",
+			"require": "./dist/module.cjs"
+		}
+	},
+	"main": "./dist/module.cjs",
+	"types": "./dist/types.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"prepack": "nuxt-module-build build",
+		"dev": "nuxi dev .playground",
+		"dev:build": "nuxi build .playground",
+		"dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare .playground",
+		"prettier": "prettier \"**/*.{js,vue,md,yml,css,scss,json}\"",
+		"lint": "yarn prettier --check . && yarn eslint --quiet .",
+		"lint:fix": "yarn prettier --write . && yarn eslint --fix --quiet ."
+	},
+	"dependencies": {
+		"@nuxt/kit": "^3.9.0"
+	},
+	"devDependencies": {
+		"@limbo-works/lint-configs": "^1.0.3",
+		"@nuxt/devtools": "latest",
+		"@nuxt/module-builder": "^0.5.5",
+		"@nuxt/schema": "^3.9.0",
+		"@nuxt/test-utils": "^3.9.0",
+		"@types/node": "^20.10.6",
+		"eslint": "^8.56.0",
+		"nuxt": "^3.9.0",
+		"typescript": "^5.4.4"
+	}
+}

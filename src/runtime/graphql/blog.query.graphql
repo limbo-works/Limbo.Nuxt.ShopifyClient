@@ -1,0 +1,11 @@
+query ($id: ID!) {
+	blog(id: $id) {
+		id
+		handle
+		title
+		seo {
+			title
+			description
+		}
+	}
+}

@@ -1,0 +1,36 @@
+query ($first: Int, $last: Int, $after: String, $before: String) {
+	articles(first: $first, last: $last, after: $after, before: $before) {
+		edges {
+			node {
+				id
+				handle
+				title
+				contentHtml
+				excerptHtml
+				publishedAt
+				tags
+				blog {
+					id
+					handle
+					title
+				}
+				image {
+					url
+					width
+					height
+					altText
+				}
+				seo {
+					title
+					description
+				}
+			}
+		}
+		pageInfo {
+			endCursor
+			startCursor
+			hasNextPage
+			hasPreviousPage
+		}
+	}
+}
