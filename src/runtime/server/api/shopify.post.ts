@@ -1,5 +1,5 @@
 import { defineEventHandler, readBody } from 'h3';
-import { useRuntimeConfig } from '#nitro';
+import { useRuntimeConfig } from 'nitropack/runtime';
 
 export default defineEventHandler(async (event) => {
 	const { shopify: options } = useRuntimeConfig();

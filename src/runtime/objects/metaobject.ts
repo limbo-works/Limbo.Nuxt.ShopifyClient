@@ -1,4 +1,4 @@
-import { query } from '../graphql-client.mjs';
+import { query } from '../graphql-client.js';
 
 import metaobjectsQuery from '../graphql/metaobjects.query.graphql?raw';
 import metaobjectQuery from '../graphql/metaobject.query.graphql?raw';
@@ -13,14 +13,15 @@ import metaobjectQuery from '../graphql/metaobject.query.graphql?raw';
  * @param {string} options.before Cursor id for fetching next page of items
  * @returns {Promise<Response>}
  */
-async function get(type, options = {}) {
+async function get(type: string, options: Record<string, any> = {}) {
 	const variables = Object.assign({ first: 12, type }, options);
-	const response = await query(metaobjectsQuery, variables);
-	const metaobjects = response.data?.metaobjects?.edges?.map(
-		({ node }) => node
-	);
+	const response: any = await query(metaobjectsQuery, variables);
 
 	const info = response.data?.metaobjects?.pageInfo;
+	const metaobjects = response.data?.metaobjects?.edges?.map(
+		(edge: any) => edge.node
+	);
+
 	return metaobjects ? { metaobjects, info } : response;
 }
 
@@ -30,9 +31,10 @@ async function get(type, options = {}) {
  * @param {string} id
  * @returns {Promise<Response>}
  */
-async function getById(id) {
-	const response = await query(metaobjectQuery, { id });
+async function getById(id: string) {
+	const response: any = await query(metaobjectQuery, { id });
 	const data = response.data?.metaobject;
+
 	return data ? { data } : response;
 }
 

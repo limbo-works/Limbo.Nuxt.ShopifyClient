@@ -1,4 +1,4 @@
-import { query } from '../graphql-client.mjs';
+import { query } from '../graphql-client.js';
 import blogsQuery from '../graphql/blogs.query.graphql?raw';
 import blogQuery from '../graphql/blog.query.graphql?raw';
 
@@ -14,10 +14,11 @@ import blogQuery from '../graphql/blog.query.graphql?raw';
  */
 async function get(options = {}) {
 	const variables = Object.assign({ first: 12 }, options);
-	const response = await query(blogsQuery, variables);
+	const response: any = await query(blogsQuery, variables);
 
-	const blogs = response.data?.blogs?.edges?.map(({ node }) => node);
 	const info = response.data?.blogs?.pageInfo;
+	const blogs = response.data?.blogs?.edges?.map((edge: any) => edge.node);
+
 	return blogs ? { blogs, info } : response;
 }
 
@@ -27,9 +28,11 @@ async function get(options = {}) {
  * @param {string} id
  * @returns {Promise<Response>}
  */
-async function getById(id) {
-	const response = await query(blogQuery, { id });
+async function getById(id: string) {
+	const variables = { id };
+	const response: any = await query(blogQuery, variables);
 	const data = response.data?.blog;
+
 	return data ? { data } : response;
 }
 

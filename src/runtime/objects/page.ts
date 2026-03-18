@@ -1,4 +1,4 @@
-import { query } from '../graphql-client.mjs';
+import { query } from '../graphql-client.js';
 import pagesQuery from '../graphql/pages.query.graphql?raw';
 import pageQuery from '../graphql/page.query.graphql?raw';
 
@@ -12,12 +12,13 @@ import pageQuery from '../graphql/page.query.graphql?raw';
  * @param {string} options.before Cursor id for fetching next page of items
  * @returns {Promise<Response>}
  */
-async function get(options = {}) {
+async function get(options: Record<string, any> = {}) {
 	const variables = Object.assign({ first: 12 }, options);
-	const response = await query(pagesQuery, variables);
+	const response: any = await query(pagesQuery, variables);
 
-	const pages = response.data?.pages?.edges?.map(({ node }) => node);
 	const info = response.data?.pages?.pageInfo;
+	const pages = response.data?.pages?.edges?.map((edge: any) => edge.node);
+
 	return pages ? { pages, info } : response;
 }
 
@@ -27,9 +28,10 @@ async function get(options = {}) {
  * @param {string} id
  * @returns {Promise<Response>}
  */
-async function getById(id) {
-	const response = await query(pageQuery, { id });
+async function getById(id: string) {
+	const response: any = await query(pageQuery, { id });
 	const data = response.data?.page;
+
 	return data ? { data } : response;
 }
 

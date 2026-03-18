@@ -7,7 +7,7 @@ import shopQuery from '../graphql/shop.query.graphql?raw';
  * @returns {Promise<Response>}
  */
 async function get() {
-	const response = await query(shopQuery);
+	const response: any = await query(shopQuery);
 	const data = response.data?.shop;
 	return data ? { data } : response;
 }

@@ -7,17 +7,17 @@ import {
 	createResolver,
 } from '@nuxt/kit';
 
-export default defineNuxtModule({
+interface ModuleOptions {
+	shop: string;
+	token: string;
+	version: string;
+}
+
+export default defineNuxtModule<ModuleOptions>({
 	meta: {
 		name: 'nuxt-shopify',
 		configKey: 'shopify',
 		compatibility: { nuxt: '^4.0.0' },
-	},
-
-	schema: {
-		shop: String,
-		token: String,
-		version: String,
 	},
 
 	defaults: {
@@ -35,13 +35,13 @@ export default defineNuxtModule({
 
 		addImports({
 			name: 'useShopify',
-			from: resolve(runtimeDir, 'use-shopify.mjs'),
+			from: resolve(runtimeDir, 'use-shopify.ts'),
 		});
 
 		addServerHandler({
 			method: 'post',
 			route: '/api/shopify',
-			handler: resolve(runtimeDir, 'server/api/shopify.post.mjs'),
+			handler: resolve(runtimeDir, 'server/api/shopify.post.ts'),
 		});
 	},
 });

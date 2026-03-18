@@ -1,4 +1,4 @@
-import { query } from '../graphql-client.mjs';
+import { query } from '../graphql-client.ts';
 
 import articlesQuery from '../graphql/articles.query.graphql?raw';
 import articleQuery from '../graphql/article.query.graphql?raw';
@@ -15,10 +15,13 @@ import articleQuery from '../graphql/article.query.graphql?raw';
  */
 async function get(options = {}) {
 	const variables = Object.assign({ first: 12 }, options);
-	const response = await query(articlesQuery, variables);
+	const response: any = await query(articlesQuery, variables);
 
-	const articles = response.data?.articles?.edges?.map(({ node }) => node);
 	const info = response.data?.articles?.pageInfo;
+	const articles = response.data?.articles?.edges?.map(
+		(edge: any) => edge.node
+	);
+
 	return articles ? { articles, info } : response;
 }
 
@@ -28,10 +31,10 @@ async function get(options = {}) {
  * @param {string} id
  * @returns {Promise<Response>}
  */
-async function getById(id) {
-	const response = await query(articleQuery, { id });
+async function getById(id: string) {
+	const variables = { id };
+	const response: any = await query(articleQuery, variables);
 	const data = response.data?.article;
-	console.log('some random change');
 
 	return data ? { data } : response;
 }

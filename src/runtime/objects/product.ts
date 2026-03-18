@@ -12,12 +12,15 @@ import productQuery from '../graphql/product.query.graphql?raw';
  * @param {string} options.before Cursor id for fetching next page of items
  * @returns {Promise<Response>}
  */
-async function get(options = {}) {
+async function get(options: Record<string, any> = {}) {
 	const variables = Object.assign({ first: 12 }, options);
-	const response = await query(productsQuery, variables);
+	const response: any = await query(productsQuery, variables);
 
-	const products = response.data?.products?.edges?.map(({ node }) => node);
 	const info = response.data?.products?.pageInfo;
+	const products = response.data?.products?.edges?.map(
+		(edge: any) => edge.node
+	);
+
 	return products ? { products, info } : response;
 }
 
@@ -27,8 +30,8 @@ async function get(options = {}) {
  * @param {string} id
  * @returns {Promise<Response>}
  */
-async function getById(id) {
-	const response = await query(productQuery, { id });
+async function getById(id: string) {
+	const response: any = await query(productQuery, { id });
 	const data = response.data?.product;
 	return data ? { data } : response;
 }
