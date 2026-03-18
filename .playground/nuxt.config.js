@@ -1,6 +1,8 @@
 export default defineNuxtConfig({
 	modules: ['../src/module'],
-	devtools: { enabled: true },
+	devtools: true,
+	compatibilityDate: '2026-03-18',
+
 
 	shopify: {
 		shop: 'limbo-example',

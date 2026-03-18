@@ -11,7 +11,7 @@ export default defineNuxtModule({
 	meta: {
 		name: 'nuxt-shopify',
 		configKey: 'shopify',
-		compatibility: { nuxt: '^3.0.0' },
+		compatibility: { nuxt: '^4.0.0' },
 	},
 
 	schema: {
